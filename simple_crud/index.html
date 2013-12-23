@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app>
+  <header>
+    <script src="../bower_components/angularjs/index.js" type="text/javascript"></script>
+    <script src="crud.js" type="text/javascript"></script>
+  </header>
+  <body>
+    <h2>Simple CRUD</h2>
+    <div class="container" ng-controller="SimpleCrud">
+      <div class="messages" ng-model="message">{{message}}</div>
+      <div class="newItem">
+        <span>Item Name</span>
+        <span><input type="text" ng-model="itemName"></span>
+        <span><input type="button" value="add" ng-click="add()"></span>
+      </div>
+      <div class="items">
+        <ul>
+          <li ng-repeat="each in items">
+            <span ng-click="inlineEdit($event)">{{each.name}}</span>
+            <input type="text" ng-keyup="commit($event)" ng-model="each.name" value="{{each.name}}" style="display: none;">
+            <a href="#" ng-click="remove($event)">[remove]</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
